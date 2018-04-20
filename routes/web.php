@@ -15,6 +15,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/ffmpeg' , 'FfmpegController@index')->name('ffmpeg');
+
 Route::get('/phpinfo', function () {
     //phpinfo();
     $so = scws_new();
