@@ -17,8 +17,7 @@ Route::get('/', function () {
 
 Route::get('/ffmpeg' , 'FfmpegController@index')->name('ffmpeg');
 
-Route::get('/phpinfo', function () {
-    //phpinfo();
+Route::get('/scws', function () {
     $so = scws_new();
     $so->set_charset('utf8');
     // 这里没有调用 set_dict 和 set_rule 系统会自动试调用 ini 中指定路径下的词典和规则文件
@@ -28,6 +27,10 @@ Route::get('/phpinfo', function () {
         print_r($tmp);
     }
     $so->close();
+});
+
+Route::get('/phpinfo', function () {
+    phpinfo();
 });
 
 Route::get('/', 'StaticPagesController@home')->name('home');
