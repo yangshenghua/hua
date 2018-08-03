@@ -33,6 +33,10 @@ Route::get('/phpinfo', function () {
     phpinfo();
 });
 
+Route::get('/git', function () {
+   echo "git test";
+});
+
 Route::get('/', 'StaticPagesController@home')->name('home');
 Route::get('/help', 'StaticPagesController@help')->name('help');
 Route::get('/about', 'StaticPagesController@about')->name('about');
