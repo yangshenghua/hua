@@ -12,7 +12,7 @@ class StatusPolicy
 
     public function destroy(User $user, Status $status)
     {
-        dump($user->id,$status->user_id);
+        dump($status->toArray());
         return $user->id === $status->user_id;
     }
 }
