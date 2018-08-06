@@ -12,7 +12,6 @@ class StatusPolicy
 
     public function destroy(User $user, Status $status)
     {
-        dump($status->toArray());
         return $user->id === $status->user_id;
     }
 }
