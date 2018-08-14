@@ -15,6 +15,6 @@
         </div>
     </div>
 
-    <script src="/js/app.js"></script>
+    <script src="/js/app.js?v=20180809"></script>
 </body>
 </html>
