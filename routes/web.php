@@ -15,22 +15,21 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/ffmpeg' , 'FfmpegController@index')->name('ffmpeg');
+Route::get('/ffmpeg', 'FfmpegController@index')->name('ffmpeg');
 
 Route::get('/scws', function () {
     $so = scws_new();
     $so->set_charset('utf8');
     // 这里没有调用 set_dict 和 set_rule 系统会自动试调用 ini 中指定路径下的词典和规则文件
     $so->send_text("寄售宝马320_2009年_7.6万公里_11.5万元");
-    while ($tmp = $so->get_result())
-    {
+    while ($tmp = $so->get_result()) {
         print_r($tmp);
     }
     $so->close();
 });
 
-Route::get('/pinfo',function(){
-    return phpinfo();
+Route::get('/pinfo', function () {
+    phpinfo();
 });
 
 Route::get('/', 'StaticPagesController@home')->name('home');
@@ -44,14 +43,14 @@ Route::get('login', 'SessionsController@create')->name('login');
 Route::post('login', 'SessionsController@store')->name('login');
 Route::delete('logout', 'SessionsController@destroy')->name('logout');
 
-Route::get('signup/confirm/{token}','UsersController@confirmEmail')->name('confirm_email');
+Route::get('signup/confirm/{token}', 'UsersController@confirmEmail')->name('confirm_email');
 
 Route::get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.request');
 Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');
 Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
 Route::post('password/reset', 'Auth\ResetPasswordController@reset')->name('password.update');
 
-Route::resource('statuses', 'StatusesController', ['only'=>['store', 'destroy']]);
+Route::resource('statuses', 'StatusesController', ['only' => ['store', 'destroy']]);
 
 Route::get('/users/{user}/followings', 'UsersController@followings')->name('users.followings');
 Route::get('/users/{user}/followers', 'UsersController@followers')->name('users.followers');
